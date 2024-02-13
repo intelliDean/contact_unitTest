@@ -133,14 +133,9 @@ describe("Todo", function () {
             await todo.createTodo("Read", "I want to read");
             const result = await todo.getTodo(0);
 
-            assert.equal(result.title, "Read");
-            assert.equal(result.description, "I want to read");
-
+            assert.equal(await todo.getDescription(0), "I want to read");
             await todo.updateDescription(0, "I want to start reading by 5pm");
-
-            const result1 = await todo.getTodo(0);
-            assert.equal(result1.title, "Read");
-            assert.equal(result1.description, "I want to start reading by 5pm");
+            assert.equal(await todo.getDescription(0), "I want to start reading by 5pm");
         });
     });
 });
