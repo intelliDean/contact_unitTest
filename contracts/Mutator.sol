@@ -11,6 +11,5 @@ contract Mutators {
     }
 
     function getName() external view returns (string memory) {
-        return name;
-    }
+        return name;    }
 }
