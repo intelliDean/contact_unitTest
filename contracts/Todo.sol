@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.9;
 
 contract Todo {
     //Array to store todo struct
@@ -64,5 +64,9 @@ contract Todo {
     //function to get todo description
     function getDescription(uint _index) external view notOutOfBound(_index) returns(string memory) {
         return getTodo(_index).description;
+    }
+
+    function getArraySize() external view returns(uint) {
+        return todos.length;
     }
 }
