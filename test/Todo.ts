@@ -18,7 +18,7 @@ describe("Todo", function () {
     }
 
     describe("Test create todo", function () {
-        it("Should be able to create and get todogit ", async function () {
+        it("Should be able to create and get todo", async function () {
             const {todo} = await loadFixture(deployMutators);
 
             await todo.createTodo("Read", "I want to read");
