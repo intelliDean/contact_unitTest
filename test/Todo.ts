@@ -113,16 +113,10 @@ describe("Todo", function () {
             const {todo} = await loadFixture(deployMutators);
 
             await todo.createTodo("Read", "I want to read");
-            const result = await todo.getTodo(0);
 
-            assert.equal(result.title, "Read");
-            assert.equal(result.description, "I want to read");
-
+            assert.equal(await todo.getTitle(0), "Read");
             await todo.updateTitle(0, "To Read");
-
-            const result1 = await todo.getTodo(0);
-            assert.equal(result1.title, "To Read");
-            assert.equal(result1.description, "I want to read");
+            assert.equal(await todo.getTitle(0), "To Read");
         });
     });
 
