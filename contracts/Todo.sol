@@ -66,6 +66,7 @@ contract Todo {
         return getTodo(_index).description;
     }
 
+    //function to get the size of the todo list
     function getArraySize() external view returns(uint) {
         return todos.length;
     }
