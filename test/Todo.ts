@@ -16,6 +16,12 @@ describe("Todo", function () {
 
         return {todo};
     }
+    describe("Deployment", () => {
+        it('should make sure the contract deploys successfully', async () => {
+            const {todo} = await loadFixture(deployMutators);
+            expect(todo.getAddress()).exist;
+        });
+    })
 
     describe("Test create todo", function () {
         it("Should be able to create and get todo", async function () {

@@ -1,15 +1,15 @@
-import { ethers } from "hardhat";
+import {ethers} from "hardhat";
 
 async function main() {
-  const mutators = await ethers.deployContract("Todo");
-  await mutators.waitForDeployment();
+    const erc = await ethers.deployContract("SaveERC20");
+    await erc.waitForDeployment();
 
-  console.log(`Contract: Todo deployed to ${mutators.target}`);
+    console.log(`Contract: Todo deployed to ${erc.target}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
+    console.error(error);
+    process.exitCode = 1;
 });
