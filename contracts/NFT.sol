@@ -17,13 +17,3 @@ contract DeanNFT is ERC721URIStorage, Ownable {
         _setTokenURI(_tokenId, _uri);
     }
 }
-
-
-
-
-
-{
-  "name": "Cars from the future",
-  "description": "dog eating pizza",
-  "image": "QmbY4DDqwuSFSZyP24aQnus5v45WXpX6JiWHSSs3f1o8DD"
-}

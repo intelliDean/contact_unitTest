@@ -48,8 +48,18 @@ describe("Saving ERC20 Token", function () {
                 saveERC
             } = await loadFixture(deployTheContracts);
 
-
             // Check initial savings balance (assumes a `savings` function in the contract)
+            const initialBalance = await erc.balanceOf(owner.address);
+            expect(initialBalance).to.equal(1000000);
+        });
+
+        it('should deposit token successfully', async () => {
+            const {
+                owner,
+                erc,
+                saveERC
+            } = await loadFixture(deployTheContracts);
+
             const initialBalance = await erc.balanceOf(owner.address);
             expect(initialBalance).to.equal(1000000);
 
@@ -58,12 +68,32 @@ describe("Saving ERC20 Token", function () {
             await saveERC.connect(owner).deposit(20000);
             const savingBal = await saveERC.checkUserBalance(owner.address)
             expect(savingBal).to.equal(20000);
-
-            await saveERC.connect(owner).withdraw(10000);
-            const newBal = await saveERC.checkUserBalance(owner.address)
-            expect(newBal).to.equal(10000);
-
+            expect(await saveERC.checkContractBalance()).to.equal(savingBal);
         });
+
+        it('should withdraw successfully', async () => {
+             const {
+                owner,
+                erc,
+                saveERC
+            } = await loadFixture(deployTheContracts);
+
+            const initialBalance = await erc.balanceOf(owner.address);
+            expect(initialBalance).to.equal(1000000);
+
+            erc.connect(owner).approve(await saveERC.getAddress(), 20000);
+
+            await saveERC.connect(owner).deposit(20000);
+            const savingBal = await saveERC.checkUserBalance(owner.address)
+            expect(savingBal).to.equal(20000);
+            expect(await saveERC.checkContractBalance()).to.equal(savingBal);
+
+           // await saveERC.connect(owner).withdraw(10000);
+            const newBal = await saveERC.checkUserBalance(owner.address);
+            console.log(`New Balance: ${newBal}`);
+            expect(newBal).to.equal(10000);
+        });
+
         //
         //     it('first deposit should be equals to balance', async () => {
         //         const {owner, piggeth} = await loadFixture(deployPiggeth);

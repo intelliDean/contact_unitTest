@@ -1,7 +1,7 @@
 import {ethers} from "hardhat";
 
 async function main() {
-    const erc = await ethers.deployContract("SaveERC20");
+    const erc = await ethers.deployContract("Class");
     await erc.waitForDeployment();
 
     console.log(`Contract: Todo deployed to ${erc.target}`);
