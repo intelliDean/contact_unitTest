@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract DeanNFT is ERC721URIStorage, Ownable {
 
-    constructor() Ownable(msg.sender) ERC721("DeanNFT", "DTK") {}
+    constructor() Ownable() ERC721("DeanNFT", "DTK") {}
 
     function mint(address _to, uint256 _tokenId, string calldata _uri) external onlyOwner {
         _mint(_to, _tokenId);
