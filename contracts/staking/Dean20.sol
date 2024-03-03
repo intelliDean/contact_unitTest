@@ -25,9 +25,6 @@ contract Dean20 is IDean20 {
     mapping(address account => uint256 balance) private balances;
     mapping(address account => mapping(address spender => uint256)) private allowances;
 
-    event Approval(address indexed _owner, address indexed _spender, uint256 _value);
-
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
     constructor() {
         s_tokenDecimal = 18;
@@ -42,6 +39,7 @@ contract Dean20 is IDean20 {
         s_totalSupply = s_totalSupply + initialSupply;
         balances[msg.sender] = balances[msg.sender] + initialSupply;
     }
+
 
     function onlyOwner() private view {
         if (msg.sender != s_owner) revert ONLY_OWNER_IS_ALLOWED();
